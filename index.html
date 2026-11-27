@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Happy Birthday Vishal! ❤️🎂</title>
+
+  <meta name="description" content="A personal birthday surprise made with love for Vishal ❤️" />
+  <meta name="theme-color" content="#FFE8EE" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Happy Birthday Vishal! ❤️🎂" />
+  <meta property="og:description" content="Hey Vishal! Today is a little more special... I have something for you!" />
+
+  <!-- Cute Heart & Cake Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23FFE4EC'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='38'%3E%F0%9F%8E%82%3C/text%3E%3C/svg%3E" />
+
+  <!-- Handwritten & Friendly Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Soft Pastel Background & Celebration Canvas -->
+  <div class="pastel-bg" aria-hidden="true"></div>
+  <div id="floating-decor" class="floating-decor" aria-hidden="true"></div>
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- Music On / Off Control (revealed after first click) -->
+  <button
+    id="music-btn"
+    class="music-btn"
+    type="button"
+    aria-label="Toggle birthday music"
+    aria-pressed="false"
+    hidden
+  >
+    <span id="music-icon" aria-hidden="true">🎵</span>
+    <span id="music-text">Music On</span>
+  </button>
+
+  <!-- ========================================================
+       SCREEN 1: THE SURPRISE
+       ======================================================== -->
+  <section id="screen-surprise" class="screen screen-surprise is-active" aria-labelledby="surprise-heading">
+    <div class="surprise-card">
+      <!-- Cute Handcrafted Gift Illustration -->
+      <div id="gift-illustration" class="gift-illustration" aria-hidden="true">
+        <svg viewBox="0 0 140 132" class="gift-svg">
+          <!-- Soft shadow -->
+          <ellipse cx="70" cy="122" rx="44" ry="7" fill="rgba(180, 125, 145, 0.22)" />
+          <!-- Box body -->
+          <rect x="26" y="54" width="88" height="64" rx="12" fill="#FFF7F2" stroke="#E8B4C4" stroke-width="2.5" />
+          <!-- Vertical golden-peach ribbon -->
+          <rect x="61" y="54" width="18" height="64" fill="#F6C87B" />
+          <!-- Lid -->
+          <g class="gift-lid-group">
+            <rect x="20" y="38" width="100" height="22" rx="9" fill="#FFD6E4" stroke="#E5A4BA" stroke-width="2.5" />
+            <rect x="61" y="38" width="18" height="22" fill="#F6C87B" />
+            <!-- Cute Ribbon Bow -->
+            <path d="M70 38 C54 14, 34 24, 48 38 Z" fill="#F9D58E" stroke="#DBA852" stroke-width="2" />
+            <path d="M70 38 C86 14, 106 24, 92 38 Z" fill="#F9D58E" stroke="#DBA852" stroke-width="2" />
+            <circle cx="70" cy="37" r="6.5" fill="#F3BA5F" stroke="#DBA852" stroke-width="1.8" />
+          </g>
+          <!-- Little heart tag -->
+          <path d="M98 76 C98 72, 104 70, 106 74 C108 70, 114 72, 114 76 C114 82, 106 87, 106 87 C106 87, 98 82, 98 76 Z" fill="#F28AA8" />
+          <!-- Tiny sparkles -->
+          <path d="M22 24 L24 29 L29 31 L24 33 L22 38 L20 33 L15 31 L20 29 Z" fill="#E9B85B" />
+          <path d="M118 20 L119.5 23.5 L123 25 L119.5 26.5 L118 30 L116.5 26.5 L113 25 L116.5 23.5 Z" fill="#E9B85B" />
+        </svg>
+      </div>
+
+      <h1 id="surprise-heading" class="surprise-title">Hey Vishal! ❤️</h1>
+      <p class="surprise-sub">Today is a little more special...</p>
+      <p class="surprise-note">I have something for you! 🥹</p>
+
+      <button id="open-btn" class="surprise-btn" type="button">
+        <span>CLICK HERE 🎁</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SCREEN 2: THE MAIN BIRTHDAY SURPRISE
+       ======================================================== -->
+  <main id="screen-celebration" class="screen screen-celebration" aria-labelledby="birthday-heading" hidden>
+    <!-- Decorative corner emojis -->
+    <div class="emoji-sprinkles" aria-hidden="true">
+      <span class="em em-1">🎂</span>
+      <span class="em em-2">🎈</span>
+      <span class="em em-3">🎉</span>
+      <span class="em em-4">🥳</span>
+      <span class="em em-5">🎁</span>
+      <span class="em em-6">❤️</span>
+    </div>
+
+    <header class="celebration-header">
+      <p class="bday-kicker">HAPPY BIRTHDAY</p>
+      <h1 id="birthday-heading" class="bday-name">VISHAL! ❤️🎂</h1>
+      <p class="bday-subtitle">Today is all about you! 🥳</p>
+    </header>
+
+    <!-- Main Scrapbook Layout: Photos Around the Birthday Message -->
+    <section class="celebration-stage" aria-label="Birthday letter and Vishal's memories">
+      <!-- Left Floating Photo(s) -->
+      <div id="photos-left" class="photos-wing photos-left"></div>
+
+      <!-- Handmade Birthday Letter Card -->
+      <article class="letter-card" aria-label="Personal birthday message for Vishal">
+        <div class="washi-tape" aria-hidden="true"></div>
+        <span class="card-heart-badge" aria-hidden="true">💌</span>
+
+        <div id="letter-content" class="letter-content">
+          <p class="letter-salutation">Dear Vishal ❤️,</p>
+          <p>Wishing you the happiest birthday!</p>
+          <p>May your life always be filled with happiness, success, good health and countless beautiful moments.</p>
+          <p>You deserve all the wonderful things this world has to offer. May every dream you carry in your heart come true, and may you always find reasons to smile.</p>
+          <p>Keep shining, keep laughing, and keep being the amazing person you are.</p>
+          <p>Thank you for being such a wonderful friend and an important part of my life.</p>
+          <p>I hope this new year brings you endless opportunities, unforgettable memories and all the happiness you deserve.</p>
+          <p>Once again, a very Happy Birthday, Vishal! ❤️🎂</p>
+          <p class="letter-signoff">Lots of love and best wishes! 🫂</p>
+        </div>
+      </article>
+
+      <!-- Right Floating Photo(s) -->
+      <div id="photos-right" class="photos-wing photos-right"></div>
+    </section>
+
+    <footer class="made-with-love">
+      <!-- Special Gift Letter Icon Trigger -->
+      <div class="special-gift-cta">
+        <button id="special-letter-btn" class="letter-trigger-btn" type="button" aria-label="Open one special gift for you">
+          <span class="mini-envelope" aria-hidden="true">
+            <span class="mini-env-flap"></span>
+            <span class="mini-env-heart">💌</span>
+          </span>
+          <span class="letter-trigger-text">ONE SPECIAL GIFT FOR YOU 💌</span>
+        </button>
+      </div>
+      <span class="love-note">Made with ❤️ just for you, Vishal</span>
+    </footer>
+  </main>
+
+  <!-- ========================================================
+       SCREEN 3: SPECIAL GIFT SURPRISE PAGE
+       ======================================================== -->
+  <section id="screen-gift" class="screen screen-gift" aria-labelledby="gift-heading" hidden>
+    <div class="surprise-card gift-page-card">
+      <!-- Cute Animated Gift / Envelope Illustration -->
+      <div id="special-gift-box" class="gift-illustration special-gift-anim" aria-hidden="true">
+        <svg viewBox="0 0 140 132" class="gift-svg">
+          <ellipse cx="70" cy="122" rx="44" ry="7" fill="rgba(180, 125, 145, 0.22)" />
+          <rect x="26" y="54" width="88" height="64" rx="12" fill="#FFF7F2" stroke="#E8B4C4" stroke-width="2.5" />
+          <rect x="61" y="54" width="18" height="64" fill="#F6C87B" />
+          <g class="gift-lid-group">
+            <rect x="20" y="38" width="100" height="22" rx="9" fill="#FFD6E4" stroke="#E5A4BA" stroke-width="2.5" />
+            <rect x="61" y="38" width="18" height="22" fill="#F6C87B" />
+            <path d="M70 38 C54 14, 34 24, 48 38 Z" fill="#F9D58E" stroke="#DBA852" stroke-width="2" />
+            <path d="M70 38 C86 14, 106 24, 92 38 Z" fill="#F9D58E" stroke="#DBA852" stroke-width="2" />
+            <circle cx="70" cy="37" r="6.5" fill="#F3BA5F" stroke="#DBA852" stroke-width="1.8" />
+          </g>
+          <path d="M98 76 C98 72, 104 70, 106 74 C108 70, 114 72, 114 76 C114 82, 106 87, 106 87 C106 87, 98 82, 98 76 Z" fill="#F28AA8" />
+          <path d="M22 24 L24 29 L29 31 L24 33 L22 38 L20 33 L15 31 L20 29 Z" fill="#E9B85B" />
+          <path d="M118 20 L119.5 23.5 L123 25 L119.5 26.5 L118 30 L116.5 26.5 L113 25 L116.5 23.5 Z" fill="#E9B85B" />
+        </svg>
+      </div>
+
+      <h1 id="gift-heading" class="gift-page-title">Vishal, there's a special gift for you! ❤️</h1>
+      <p class="gift-page-sub">Something special is waiting for you...</p>
+
+      <!-- Secret Question Gate -->
+      <form id="secret-question-form" class="secret-question-box" novalidate>
+        <p class="secret-q-intro">Let's see how well you know me! ❤️</p>
+        <label for="secret-answer-input" class="secret-q-prompt">Where will you find her?</label>
+        <div class="secret-input-row">
+          <input
+            id="secret-answer-input"
+            type="text"
+            class="secret-input"
+            placeholder="Type your answer..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button id="check-answer-btn" class="secret-submit-btn" type="submit">
+            Check 💌
+          </button>
+        </div>
+        <p id="secret-feedback" class="secret-feedback" aria-live="polite"></p>
+      </form>
+
+      <button id="open-special-gift-btn" class="surprise-btn" type="button" hidden>
+        <span>OPEN YOUR SPECIAL GIFT 🎁</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SCREEN 4: PHOTO CAROUSEL + ENVELOPE + OFFICIAL CONTRACT
+       ======================================================== -->
+  <section id="screen-carousel" class="screen screen-carousel" aria-labelledby="carousel-heading" hidden>
+    <div class="emoji-sprinkles" aria-hidden="true">
+      <span class="em em-1">🎉</span>
+      <span class="em em-2">💖</span>
+      <span class="em em-3">🎂</span>
+      <span class="em em-4">✨</span>
+      <span class="em em-5">🥳</span>
+      <span class="em em-6">🫂</span>
+    </div>
+
+    <header class="carousel-header">
+      <p class="bday-kicker">UNFORGETTABLE MEMORIES</p>
+      <h1 id="carousel-heading" class="carousel-title">Moments With Vishal ❤️</h1>
+      <p class="bday-subtitle">Swipe or hover anytime ✨ (Tap any photo to zoom)</p>
+    </header>
+
+    <div id="carousel-viewport" class="carousel-viewport" aria-label="Continuous horizontal photo memories carousel">
+      <div id="carousel-track" class="carousel-track"></div>
+    </div>
+
+    <!-- ROMANTIC ENVELOPE INTRODUCTION -->
+    <div class="envelope-intro-block">
+      <h2 class="wait-heading">WAIT... THERE'S ONE MORE THING 💌</h2>
+      <p class="wait-sub">Some feelings are too special to be expressed in just a few words...</p>
+      <p class="wait-heart-note">A little message from someone who holds you very close to her heart. ❤️</p>
+
+      <button
+        id="contract-envelope"
+        class="cute-envelope"
+        type="button"
+        aria-label="Open the envelope to read a personal letter and forever promise"
+        aria-expanded="false"
+      >
+        <span class="env-back"></span>
+        <span class="env-letter-peek">
+          <span class="peek-line">For You</span>
+          <span class="peek-line">Vishal 💌</span>
+        </span>
+        <span class="env-pocket-left"></span>
+        <span class="env-pocket-right"></span>
+        <span class="env-pocket-bottom"></span>
+        <span class="env-flap"></span>
+        <span class="env-seal" aria-hidden="true">❤️</span>
+      </button>
+      <p id="envelope-tap-hint" class="envelope-tap-hint">Tap the envelope to open ✨</p>
+    </div>
+
+    <!-- PERSONAL LOVE LETTER + ROMANTIC PROMISE CONTRACT -->
+    <section id="contract-section" class="contract-section" aria-labelledby="love-letter-title" hidden>
+      <!-- Personal Love Letter on Warm Cream Paper -->
+      <article class="love-letter-paper">
+        <div class="love-letter-inner">
+          <div class="contract-hearts" aria-hidden="true">❤️ ✨ 💌</div>
+          <h2 id="love-letter-title" class="love-letter-heading">MY DEAREST VISHAL ❤️</h2>
+
+          <div class="love-letter-body">
+            <p>Sometimes, I wonder how one person can become so special without even trying.</p>
+            <p>You bring a kind of happiness into my life that words can never fully explain. Your smile makes my day brighter, your presence makes everything feel better, and even the smallest moments become beautiful when they involve you.</p>
+            <p>I don't know what the future has planned for us, but I know one thing: if I ever get the chance, I would love to make that future with you.</p>
+            <p>I want to share silly laughs, little arguments, unexpected adventures, peaceful evenings and countless beautiful memories with you.</p>
+            <p>I want to stand beside you on your happiest days and hold your hand through the difficult ones.</p>
+            <p>I don't wish for a perfect life. I just wish for a life where we choose each other, understand each other, grow together and never stop loving the little things that make us who we are.</p>
+            <p>If life gives me the chance to walk beside you, I would choose that journey with all my heart.</p>
+            <p class="love-letter-bold"><strong>Because my favourite place would always be wherever you are. ❤️</strong></p>
+            <p class="love-letter-closing">With all my love.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Romantic Promise Contract -->
+      <article class="contract-paper" aria-labelledby="contract-title">
+        <div class="contract-border-inner">
+          <div class="contract-hearts" aria-hidden="true">💖 ✨ 💛</div>
+          <h2 id="contract-title" class="contract-title">OUR LITTLE FOREVER PROMISE ❤️</h2>
+          <p class="contract-subtitle">
+            "A promise between two hearts that wish to choose each other, every single day."
+          </p>
+          <p class="contract-intro">
+            This is not a legal contract. It is a collection of little promises, dreams and feelings from someone who truly wishes to share a beautiful life with Vishal.
+          </p>
+
+          <h3 class="contract-rules-heading">OUR PROMISES</h3>
+          <ol class="contract-rules">
+            <li>We promise to keep smiling together, even on the most ordinary days. ❤️</li>
+            <li>We promise to respect, understand and support each other through every situation.</li>
+            <li>We promise to celebrate each other's happiness and stand together during difficult times.</li>
+            <li>We promise to never stop making memories, laughing at silly things and enjoying life's little moments.</li>
+            <li>We promise to communicate honestly, forgive with love and never take each other for granted.</li>
+            <li>We promise to keep choosing each other, not just on special days but in all the little moments of life.</li>
+            <li>We promise to dream together, grow together and make our own beautiful little world.</li>
+          </ol>
+
+          <!-- The Most Important Question -->
+          <div class="proposal-block">
+            <div class="romantic-heart-pulse" aria-hidden="true">❤️</div>
+            <p class="proposal-question">VISHAL, WILL YOU LET ME BE YOUR FOREVER? ❤️</p>
+            <p class="proposal-note">Because if I could choose one person to share all my tomorrows with, I would choose you.</p>
+
+            <div class="yes-buttons">
+              <button id="yes-btn-1" class="yes-btn" type="button">YES, ALWAYS ❤️</button>
+              <button id="yes-btn-2" class="yes-btn yes-btn-alt" type="button">A THOUSAND TIMES YES! 🥹</button>
+            </div>
+
+            <div id="contract-accepted" class="contract-accepted" aria-live="polite" hidden>
+              <p class="accepted-main">HERE'S TO OUR BEAUTIFUL FOREVER! ❤️</p>
+              <p class="accepted-sub">May our story always be filled with love, laughter and endless memories.</p>
+            </div>
+          </div>
+
+          <hr class="contract-divider" />
+
+          <!-- Handwritten Love Letter Signature Section -->
+          <div class="signature-block">
+            <p class="romantic-sig-heading">
+              With Love, From Someone Who Wishes To Be By Your Side Forever ❤️
+            </p>
+
+            <div class="decorative-sig-line">
+              <span class="her-sig-label">Her Signature</span>
+            </div>
+
+            <div class="sig-pad-wrap">
+              <canvas
+                id="signature-canvas"
+                class="signature-canvas"
+                aria-label="Draw signature here"
+              ></canvas>
+              <span id="sig-placeholder" class="sig-placeholder">Sign here with mouse or finger ✍️</span>
+            </div>
+
+            <div class="sig-pad-actions">
+              <button id="clear-sig-btn" class="clear-sig-btn" type="button">Clear Signature</button>
+            </div>
+
+            <button id="sign-contract-btn" class="surprise-btn sign-submit-btn" type="button">
+              <span>SEAL OUR PROMISE ❤️</span>
+            </button>
+
+            <p id="sig-feedback" class="sig-feedback" aria-live="polite"></p>
+
+            <div id="signed-status" class="sealed-letter-card" aria-live="polite" hidden>
+              <div class="sealed-wax-badge" aria-hidden="true">💌</div>
+              <p class="sealed-title">PROMISE SEALED FOREVER! ❤️✨</p>
+              <p class="sealed-sub">Held close in two hearts, today and always.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <div class="carousel-actions">
+      <button id="back-to-card-btn" class="back-pill-btn" type="button">
+        <span>← Back to Birthday Card 💌</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Simple Photo Preview Modal on Tap -->
+  <div id="photo-modal" class="photo-modal" role="dialog" aria-modal="true" aria-labelledby="modal-caption" hidden>
+    <button id="modal-close" class="modal-close" type="button" aria-label="Close photo">✕</button>
+    <div class="modal-box">
+      <img id="modal-img" src="" alt="" />
+      <p id="modal-caption" class="modal-caption"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
